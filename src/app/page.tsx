@@ -11,6 +11,7 @@ export default function Home() {
         <Image className="dark:invert" src={bikePic} alt="bike logo" priority />
         <div>React 18</div>
         <Sandpack
+          options={{ resizablePanels: true }}
           files={{
             "/App.js": `import { useState } from "react";
 
