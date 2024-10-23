@@ -7,11 +7,10 @@ import bikePic from "../../public/images/bike.png";
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+      <main className="m-auto flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Image className="dark:invert" src={bikePic} alt="bike logo" priority />
         <div>React 18</div>
         <Sandpack
-          options={{ resizablePanels: true }}
           files={{
             "/App.js": `import { useState } from "react";
 
@@ -42,7 +41,7 @@ export default function UpdateName({}) {
 }`,
           }}
           template="react"
-          className="!w-full"
+          options={{ resizablePanels: true }}
         />
         <div>React 19 Actions</div>
         <Sandpack
@@ -71,7 +70,7 @@ export default function UpdateName({}) {
 }`,
           }}
           template="react"
-          className="!w-full"
+          options={{ resizablePanels: true }}
         />
       </main>
 
