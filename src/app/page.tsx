@@ -8,7 +8,39 @@ export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="m-auto flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image className="dark:invert" src={bikePic} alt="bike logo" priority />
+        <div className="flex items-center space-x-6">
+          <div className="space-y-2">
+            <div>
+              🤖 A new React compiler will be introduced in future versions of
+              React.{" "}
+            </div>
+            <div>
+              {" "}
+              🙌🏽 We will now have automatic re-rendering, memoization, and
+              optimization of state and UI.{" "}
+            </div>
+            <div>
+              🔮 There will be new hooks like use(), which will simplify
+              promises and asynchronous code.{" "}
+            </div>
+            <div>⚙️ React will now support server-side components. </div>
+            <div>
+              📝 Better form handling will be achieved through actions,
+              useFormStatus(), useStatusForm(), and useOptimistic().{" "}
+            </div>
+            <div>
+              🖼 React will optimize asset loading at the core level through
+              suspense to enhance performance. 🔗 React will also integrate with
+              Web Components.{" "}
+            </div>
+          </div>
+          <Image
+            className="dark:invert w-[400px]"
+            src={bikePic}
+            alt="bike logo"
+            priority
+          />
+        </div>
         <div>React 18</div>
         <Sandpack
           files={{
