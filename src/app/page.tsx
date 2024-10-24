@@ -12,10 +12,10 @@ export default function Home() {
           <div className="space-y-2">
             <div>
               🤖 A new React compiler will be introduced in future versions of
-              React.{" "}
+              React.
             </div>
+            <div>🔗 React will integrate with Web Components.</div>
             <div>
-              {" "}
               🙌🏽 We will now have automatic re-rendering, memoization, and
               optimization of state and UI.{" "}
             </div>
