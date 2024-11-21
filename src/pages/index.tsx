@@ -1,10 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
-import { useEffect, useRef, useState } from "react";
-import { io } from "socket.io-client";
+import { useEffect, useState } from "react";
+import { io, Socket } from "socket.io-client";
+import { DefaultEventsMap } from "@socket.io/component-emitter";
 
-let socket;
+let socket: Socket<DefaultEventsMap, DefaultEventsMap>;
 
 export default function Home() {
   const [input, setInput] = useState(``);
@@ -30,7 +31,7 @@ export default function Home() {
     });
   };
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (e: any) => {
     const msg = e.target.value;
     setInput(msg);
   };
