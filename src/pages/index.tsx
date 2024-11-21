@@ -1,15 +1,18 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '@/styles/Home.module.css';
-import { useEffect, useState } from 'react';
-import { io } from 'socket.io-client';
+import Head from "next/head";
+import Image from "next/image";
+import styles from "@/styles/Home.module.css";
+import { useEffect, useRef, useState } from "react";
+import { io } from "socket.io-client";
 
 let socket;
 
 export default function Home() {
   const [input, setInput] = useState(``);
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
+    // if (wasCalled.current) return;
+    // wasCalled.current = true;
     socketInitializer();
   }, []);
 
@@ -23,15 +26,18 @@ export default function Home() {
 
     socket.on(`update-input`, (msg) => {
       console.log(`broadcast message: ${msg}`);
-      setInput(msg);
+      setMessages(msg);
     });
   };
 
   const onChangeHandler = (e) => {
     const msg = e.target.value;
-    console.log(`emit message: ${msg}`);
     setInput(msg);
-    socket.emit(`input-change`, msg);
+  };
+  const sendMessage = () => {
+    socket.emit(`input-change`, [...messages, input]);
+
+    setInput(``);
   };
 
   return (
@@ -47,6 +53,9 @@ export default function Home() {
           <h1 className={styles.title}>
             WebSocket on <a href="https://nextjs.org">Next.js</a>
           </h1>
+          {messages.map((msg, index) => (
+            <p key={index}>{msg}</p>
+          ))}
 
           <input
             className={styles.input}
@@ -54,6 +63,9 @@ export default function Home() {
             value={input}
             onChange={onChangeHandler}
           />
+          <button onClick={sendMessage} style={{ padding: `8px 16px` }}>
+            Send
+          </button>
         </main>
 
         <footer className={styles.footer}>
